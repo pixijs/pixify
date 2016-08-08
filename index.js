@@ -15,24 +15,24 @@ var args = minimist(process.argv.slice(2), {
         'name',
         'dest',
         'source'
-    ],
-    default: {
-        dest: './bin/',
-        source: './src/'
-    }
+    ]
 });
 
-if (!args.name) {
+var name = args.name;
+
+if (!name) {
     console.log('> ERROR: Must include name for output.');
     process.exit(1);
 }
 
 // Build the uncompressed output
-args.output = args.name + '.js';
-args.compress = false;
-bundle(args);
+bundle({
+    compress: false,
+    output: name + '.js'
+});
 
 // Create the compressed output
-args.output = args.name + '.min.js';
-args.compress = true;
-bundle(args);
+bundle({
+    compress: true,
+    output: name + '.min.js'
+});

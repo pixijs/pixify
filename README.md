@@ -26,7 +26,7 @@ pixify --name pixi
 ### Options
 
 * **--name** or **-n** (required) The name of the output file. 
-* **--source** or **-s** (default: `./src/index.js` Application source to build. 
+* **--source** or **-s** (default: `./src/` Application source to build. 
 * **--dest** or **-d** (default: `./bin/`) Destination folder for building.
 * **--exclude** or **-e** (optional) Folder names in `--source` to ignore, for custom builds.
 
@@ -36,22 +36,27 @@ Alternatively, use the Node API:
 
 ```js
 var pixify = require('pixify');
+
+// Full verbose options
 pixify({
-	compress: true,
 	output: 'library.min.js',
-	source: './src/',
-	dest: './bin/',
-	name: 'library'
+	name: 'library',
+    source: './src/', 
+    dest: './bin/',
+    compress: true
 });
+
+// Short-hand with all defaults
+pixify('library.min.js');
 ```
 
 ### Options
 
 * **output** (`String`) Output file name (e.g. "library.js")
-* **compress** (`Boolean`) `true` to compress output
-* **source** (`String`) Output source name (e.g. "./src/")
-* **name** (`String`) Standalone name for Browserify
-* **dest** (`String`) Output folder (e.g. "./bin/")
+* **name** (`String`) Standalone name for Browserify (e.g. "library")
+* **compress** (`Boolean`, default: `true`) `true` to compress output
+* **source** (`String`, default: `"./src/"`) Output source name
+* **dest** (`String`, default: `"./bin/"`) Output folder 
 * **exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
 
 ## License

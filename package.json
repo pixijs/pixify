@@ -20,6 +20,9 @@
     "header",
     "license"
   ],
+  "engines": {
+    "node": ">=4.0"
+  },
   "author": "Matt Karl <matt@mattkarl.com>",
   "license": "MIT",
   "bugs": {
@@ -28,7 +31,7 @@
   "homepage": "https://github.com/pixijs/pixify#readme",
   "dependencies": {
     "browserify": "^13.1.0",
-    "gulp-empty": "^0.1.1",
+    "gulp-if": "^2.0.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "minimist": "^1.2.0",
