@@ -36,7 +36,6 @@ if (!args.name) {
 
 var bundler = browserify({
     entries: args.source,
-    standalone: args.name,
     debug: true
 });
 
