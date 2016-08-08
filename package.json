@@ -1,6 +1,6 @@
 {
   "name": "pixify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Browserify bundle process for PIXI libraries",
   "main": "lib/bundle.js",
   "scripts": {
