@@ -2,7 +2,7 @@
   "name": "pixify",
   "version": "1.0.1",
   "description": "Browserify bundle process for PIXI libraries",
-  "main": "index.js",
+  "main": "lib/bundle.js",
   "scripts": {
     "test": "npm run lint",
     "lint": "jshint --reporter=node_modules/jshint-stylish index.js lib"

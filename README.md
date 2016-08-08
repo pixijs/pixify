@@ -12,7 +12,7 @@ This creates two build files, compressed and uncompressed. Both with sourcemaps 
 npm install pixify --save-dev
 ```
 
-## Usage
+## Commandline Usage
 
 ```bash
 pixify --name [library-name]
@@ -29,6 +29,30 @@ pixify --name pixi
 * **--source** or **-s** (default: `./src/index.js` Application source to build. 
 * **--dest** or **-d** (default: `./bin/`) Destination folder for building.
 * **--exclude** or **-e** (optional) Folder names in `--source` to ignore, for custom builds.
+
+## API Usage
+
+Alternatively, use the Node API:
+
+```js
+var pixify = require('pixify');
+pixify({
+	compress: true,
+	output: 'library.min.js',
+	source: './src/',
+	dest: './bin/',
+	name: 'library'
+});
+```
+
+### Options
+
+* **output** (`String`) Output file name (e.g. "library.js")
+* **compress** (`Boolean`) `true` to compress output
+* **source** (`String`) Output source name (e.g. "./src/")
+* **name** (`String`) Standalone name for Browserify
+* **dest** (`String`) Output folder (e.g. "./bin/")
+* **exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
 
 ## License
 
