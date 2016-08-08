@@ -2,9 +2,10 @@
   "name": "pixify",
   "version": "1.0.3",
   "description": "Browserify bundle process for PIXI libraries",
-  "main": "lib/bundle.js",
+  "main": "lib/pixify.js",
   "scripts": {
-    "test": "npm run lint",
+    "pretest": "npm run lint",
+    "test": "mocha test/index.js",
     "lint": "jshint --reporter=node_modules/jshint-stylish index.js lib",
     "postversion": "git push && git push --tags"
   },
@@ -32,17 +33,19 @@
   "homepage": "https://github.com/pixijs/pixify#readme",
   "dependencies": {
     "browserify": "^13.1.0",
+    "gulp-header": "^1.8.7",
     "gulp-if": "^2.0.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "minimist": "^1.2.0",
-    "through2": "^2.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-fs": "^2.4.3",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
     "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0"
+    "jshint-stylish": "^2.2.0",
+    "mocha": "^3.0.2",
+    "rimraf": "^2.5.4"
   }
 }

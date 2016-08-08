@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var minimist = require('minimist');
-var bundle = require('./lib/bundle');
+var pixify = require('./lib/pixify');
 
 // Get the commandline arguments
 var args = minimist(process.argv.slice(2), {
@@ -26,13 +26,13 @@ if (!name) {
 }
 
 // Build the uncompressed output
-bundle({
+pixify({
     compress: false,
     output: name + '.js'
 });
 
 // Create the compressed output
-bundle({
+pixify({
     compress: true,
     output: name + '.min.js'
 });
