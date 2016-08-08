@@ -1,5 +1,7 @@
 # pixify
 
+[![Build Status](https://travis-ci.org/pixijs/pixify.svg?branch=master)](https://travis-ci.org/pixijs/pixify)
+
 Browserify bundle process for PIXI libraries.
 
 This creates two build files, compressed and uncompressed. Both with sourcemaps and license headers. 
