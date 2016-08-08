@@ -46,18 +46,21 @@ pixify({
     compress: true
 });
 
-// Short-hand with all defaults
-pixify('library.min.js');
+// Short-hand with all defaults with callback
+pixify('library.min.js', function(){
+    // done!
+});
 ```
 
-### Options
+### Parameters
 
-* **output** (`String`) Output file name (e.g. "library.js")
-* **name** (`String`) Standalone name for Browserify (e.g. "library")
-* **compress** (`Boolean`, default: `true`) `true` to compress output
-* **source** (`String`, default: `"./src/"`) Output source name
-* **dest** (`String`, default: `"./bin/"`) Output folder 
-* **exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
+* **options.output** (`String`) Output file name (e.g. "library.js")
+* **options.name** (`String`) Standalone name for Browserify (e.g. "library")
+* **options.compress** (`Boolean`, default: `true`) `true` to compress output
+* **options.source** (`String`, default: `"./src/"`) Output source name
+* **options.dest** (`String`, default: `"./bin/"`) Output folder 
+* **options.exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
+* **callback** (`Function`) Optional callback function when complete
 
 ## License
 
