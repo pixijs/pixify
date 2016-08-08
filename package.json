@@ -1,0 +1,44 @@
+{
+  "name": "pixify",
+  "version": "1.0.0",
+  "description": "Browserify bundle process for PIXI libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "jshint --reporter=node_modules/jshint-stylish index.js lib"
+  },
+  "bin": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixijs/pixify.git"
+  },
+  "keywords": [
+    "Browserify",
+    "sourcemaps",
+    "uglify",
+    "bundle",
+    "header",
+    "license"
+  ],
+  "author": "Matt Karl <matt@mattkarl.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pixijs/pixify/issues"
+  },
+  "homepage": "https://github.com/pixijs/pixify#readme",
+  "dependencies": {
+    "browserify": "^13.1.0",
+    "gulp-empty": "^0.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "minimist": "^1.2.0",
+    "through2": "^2.0.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-fs": "^2.4.3",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0"
+  }
+}
