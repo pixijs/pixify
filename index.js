@@ -15,7 +15,11 @@ var args = minimist(process.argv.slice(2), {
         'name',
         'dest',
         'source'
-    ]
+    ],
+    default: {
+        dest: './bin/',
+        source: './src/'
+    }
 });
 
 var name = args.name;
@@ -28,6 +32,7 @@ if (!name) {
 // Bundle and show the timestamps
 function bundle(options, callback) {
     var startTime = Date.now();
+    options = Object.assign({}, options, args);
     pixify(options, function() {
         // Display the output
         var sec = (Date.now() - startTime) / 1000;
@@ -38,11 +43,13 @@ function bundle(options, callback) {
 
 // Do the debug build
 bundle({
+    cli: true,
     compress: false,
     output: name + '.js'
 },
 // Do the release build
 bundle.bind(null, {
+    cli: true,
     compress: true,
     output: name + '.min.js'
 }, 
