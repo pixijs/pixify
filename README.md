@@ -20,15 +20,17 @@ pixify --name [library-name]
 
 For instance, 
 ```bash
-pixify --name pixi
+pixify --name my-library
 ```
 
 ### Options
 
-* **--name** or **-n** (required) The name of the output file. 
+* **--name** or **-n** (required) The name of the output file and Browserify's `standalone` argument. 
 * **--source** or **-s** (default: `./src/` Application source to build. 
 * **--dest** or **-d** (default: `./bin/`) Destination folder for building.
 * **--exclude** or **-e** (optional) Folder names in `--source` to ignore, for custom builds.
+* **--outputName** or **-o** (optional) The name of the output file if different from `--name`. 
+
 
 ## API Usage
 

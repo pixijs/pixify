@@ -9,12 +9,14 @@ var args = minimist(process.argv.slice(2), {
         e: 'exclude',
         d: 'dest',
         s: 'source',
-        n: 'name'
+        n: 'name',
+        o: 'outputName'
     },
     string: [
         'name',
         'dest',
-        'source'
+        'source',
+        'outputName'
     ],
     default: {
         dest: './bin/',
@@ -22,9 +24,9 @@ var args = minimist(process.argv.slice(2), {
     }
 });
 
-var name = args.name;
+var outputName = args.outputName || args.name;
 
-if (!name) {
+if (!outputName) {
     console.log('> ERROR: Must include name for output.');
     process.exit(1);
 }
@@ -36,7 +38,7 @@ function bundle(options, callback) {
     pixify(options, function() {
         // Display the output
         var sec = (Date.now() - startTime) / 1000;
-        console.log('> Built %s in %d seconds', name + '.js', sec);
+        console.log('> Built %s in %d seconds', outputName + '.js', sec);
         callback();
     });
 }
@@ -45,13 +47,13 @@ function bundle(options, callback) {
 bundle({
     cli: true,
     compress: false,
-    output: name + '.js'
+    output: outputName + '.js'
 },
 // Do the release build
 bundle.bind(null, {
     cli: true,
     compress: true,
-    output: name + '.min.js'
+    output: outputName + '.min.js'
 }, 
 // Add an extra line
 function(){
