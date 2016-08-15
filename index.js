@@ -10,8 +10,10 @@ var args = minimist(process.argv.slice(2), {
         d: 'dest',
         s: 'source',
         n: 'name',
-        o: 'outputName'
+        o: 'outputName',
+        w: 'watch'
     },
+    boolean: 'watch',
     string: [
         'name',
         'dest',
@@ -20,7 +22,8 @@ var args = minimist(process.argv.slice(2), {
     ],
     default: {
         dest: './bin/',
-        source: './src/'
+        source: './src/',
+        watch: false
     }
 });
 
@@ -33,12 +36,18 @@ if (!outputName) {
 
 // Bundle and show the timestamps
 function bundle(options, callback) {
-    var startTime = Date.now();
+    // Build time isn't needed using watchify
+    // time and size are generated automatically
+    if (!args.watch) {
+        var startTime = Date.now();
+    }
     options = Object.assign({}, options, args);
     pixify(options, function() {
-        // Display the output
-        var sec = (Date.now() - startTime) / 1000;
-        console.log('> Built %s in %d seconds', outputName + '.js', sec);
+        if (!args.watch) {
+            // Display the output, on in non-watch mode
+            var sec = (Date.now() - startTime) / 1000;
+            console.log('> Built %s in %d seconds', outputName + '.js', sec);
+        }
         callback();
     });
 }
@@ -49,13 +58,23 @@ bundle({
     compress: false,
     output: outputName + '.js'
 },
-// Do the release build
-bundle.bind(null, {
-    cli: true,
-    compress: true,
-    output: outputName + '.min.js'
-}, 
-// Add an extra line
-function(){
+function() {
+    // Don't do minify release when watching
+    // it's too slow because of uglify
+    if (!args.watch) {
+        // Do the release build
+        bundle({
+            cli: true,
+            compress: true,
+            output: outputName + '.min.js'
+        }, finish);
+    }
+    else {
+        finish();
+    }
+});
+
+// Adds an extra line
+function finish(){
     console.log('');
-}));
+}
