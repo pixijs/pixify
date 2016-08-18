@@ -11,9 +11,13 @@ var args = minimist(process.argv.slice(2), {
         s: 'source',
         n: 'name',
         o: 'outputName',
-        w: 'watch'
+        w: 'watch',
+        x: 'noExternal'
     },
-    boolean: 'watch',
+    boolean: [
+        'watch',
+        'noExternal'
+    ],
     string: [
         'name',
         'dest',
@@ -23,7 +27,8 @@ var args = minimist(process.argv.slice(2), {
     default: {
         dest: './bin/',
         source: './src/',
-        watch: false
+        watch: false,
+        noExternal: false
     }
 });
 
@@ -56,7 +61,8 @@ function bundle(options, callback) {
 bundle({
     cli: true,
     compress: false,
-    output: outputName + '.js'
+    output: outputName + '.js',
+    external: !args.noExternal
 },
 function() {
     // Don't do minify release when watching
@@ -66,7 +72,8 @@ function() {
         bundle({
             cli: true,
             compress: true,
-            output: outputName + '.min.js'
+            output: outputName + '.min.js',
+            external: !args.noExternal
         }, finish);
     }
     else {
