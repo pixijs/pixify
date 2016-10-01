@@ -31,6 +31,7 @@ pixify --name my-library
 * **--exclude** or **-e** (optional) Folder names in `--source` to ignore, for custom builds.
 * **--outputName** or **-o** (optional) The name of the output file if different from `--name`. 
 * **--watch** or **-w** (default: `false`) `true` to run watchify when running bundling.
+* **--noExternal** or **-x** (default: `false`) `true` to not bundle external modules.
 
 ## API Usage
 
@@ -46,6 +47,7 @@ pixify({
     source: './src/', 
     dest: './bin/',
     compress: true,
+    external: true,
     watch: false
 });
 
@@ -64,6 +66,7 @@ pixify('library.min.js', function(){
 * **options.dest** (`String`, default: `"./bin/"`) Output folder 
 * **options.exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
 * **options.watch** (`Boolean`, default: `false`)  `true` to run watchify when bundling.
+* **options.external** (`Boolean`, default: `true`) `false` to not bundle external modules.
 * **callback** (`Function`) Optional callback function when complete
 
 ## License
