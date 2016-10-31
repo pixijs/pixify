@@ -29,7 +29,8 @@ pixify --name my-library
 * **--source** or **-s** (default: `./src/` Application source to build. 
 * **--dest** or **-d** (default: `./bin/`) Destination folder for building.
 * **--exclude** or **-e** (optional) Folder names in `--source` to ignore, for custom builds.
-* **--outputName** or **-o** (optional) The name of the output file if different from `--name`. 
+* **--outputName** or **-o** (optional) The name of the output file if different from `--name`.
+* **--license** or **-l** (default: `{pixify}/lib/license.js`) License template to use 
 * **--watch** or **-w** (default: `false`) `true` to run watchify when running bundling.
 * **--noExternal** or **-x** (default: `false`) `true` to not bundle external modules.
 
@@ -46,6 +47,7 @@ pixify({
 	name: 'library',
     source: './src/', 
     dest: './bin/',
+    license: './lib/license.js',
     compress: true,
     external: true,
     watch: false
@@ -63,7 +65,8 @@ pixify('library.min.js', function(){
 * **options.name** (`String`) Standalone name for Browserify (e.g. "library")
 * **options.compress** (`Boolean`, default: `true`) `true` to compress output
 * **options.source** (`String`, default: `"./src/"`) Output source name
-* **options.dest** (`String`, default: `"./bin/"`) Output folder 
+* **options.dest** (`String`, default: `"./bin/"`) Output folder
+* **options.license** (`String`, default: `"{pixify}/lib/license.js"`) License template 
 * **options.exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
 * **options.watch** (`Boolean`, default: `false`)  `true` to run watchify when bundling.
 * **options.external** (`Boolean`, default: `true`) `false` to not bundle external modules.

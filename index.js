@@ -8,6 +8,7 @@ var args = minimist(process.argv.slice(2), {
     alias: { 
         e: 'exclude',
         d: 'dest',
+        l: 'license',
         s: 'source',
         n: 'name',
         o: 'outputName',
@@ -22,7 +23,8 @@ var args = minimist(process.argv.slice(2), {
         'name',
         'dest',
         'source',
-        'outputName'
+        'outputName',
+        'license'
     ],
     default: {
         dest: './bin/',
