@@ -1,9 +1,11 @@
-var pixify = require('../lib/pixify');
-var rimraf = require('rimraf');
-var assert = require('assert');
+"use strict";
+
+const pixify = require('../lib/pixify');
+const rimraf = require('rimraf');
+const assert = require('assert');
 
 function validate(output, result){
-    var lib = require('./bin/' + output);
+    const lib = require('./bin/' + output);
     assert.strictEqual(result, lib(), 'Library standalone should work');
 }
 
@@ -17,7 +19,7 @@ describe('pixify', function(){
     });
 
     it('should be debug mode', function(done){
-        var output = 'test.js';
+        const output = 'test.js';
         pixify({
             output: output,
             name: 'test',
@@ -29,7 +31,7 @@ describe('pixify', function(){
     });
 
     it('should be build in release mode', function(done){
-        var output = 'test.min.js';
+        const output = 'test.min.js';
         pixify(output, function(){
             validate(output, false);
             done();

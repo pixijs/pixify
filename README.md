@@ -33,6 +33,8 @@ pixify --name my-library
 * **--license** or **-l** (default: `{pixify}/lib/license.js`) License template to use 
 * **--watch** or **-w** (default: `false`) `true` to run watchify when running bundling.
 * **--noExternal** or **-x** (default: `false`) `true` to not bundle external modules.
+* **--plugin** or **-p** (optiona) Additional plugin(s) to use for Browserify, such as tsify.
+* **--transform** for **-t** (optional) Addtional transform(s) to use for Browserify, such as babelify.
 
 ## API Usage
 
@@ -71,6 +73,8 @@ pixify('library.min.js', function(){
 * **options.watch** (`Boolean`, default: `false`)  `true` to run watchify when bundling.
 * **options.external** (`Boolean`, default: `true`) `false` to not bundle external modules.
 * **callback** (`Function`) Optional callback function when complete
+* **plugin** (`String|Array`) Additional plugin(s) to use for Browserify, such as tsify.
+* **transform** (`String|Array`) Addtional transform(s) to use for Browserify, such as babelify.
 
 ## License
 

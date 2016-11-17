@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-var minimist = require('minimist');
-var pixify = require('./lib/pixify');
+"use strict";
+
+const minimist = require('minimist');
+const pixify = require('./lib/pixify');
 
 // Get the commandline arguments
-var args = minimist(process.argv.slice(2), {
+const args = minimist(process.argv.slice(2), {
     alias: { 
         e: 'exclude',
         d: 'dest',
@@ -13,7 +15,9 @@ var args = minimist(process.argv.slice(2), {
         n: 'name',
         o: 'outputName',
         w: 'watch',
-        x: 'noExternal'
+        x: 'noExternal',
+        p: 'plugin',
+        t: 'transform'
     },
     boolean: [
         'watch',
@@ -24,7 +28,9 @@ var args = minimist(process.argv.slice(2), {
         'dest',
         'source',
         'outputName',
-        'license'
+        'license',
+        'plugin',
+        'transform'
     ],
     default: {
         dest: './bin/',
@@ -34,7 +40,7 @@ var args = minimist(process.argv.slice(2), {
     }
 });
 
-var outputName = args.outputName || args.name;
+const outputName = args.outputName || args.name;
 
 if (!outputName) {
     console.log('> ERROR: Must include name for output.');
@@ -45,14 +51,15 @@ if (!outputName) {
 function bundle(options, callback) {
     // Build time isn't needed using watchify
     // time and size are generated automatically
+    let startTime;
     if (!args.watch) {
-        var startTime = Date.now();
+        startTime = Date.now();
     }
     options = Object.assign({}, options, args);
     pixify(options, function() {
         if (!args.watch) {
             // Display the output, on in non-watch mode
-            var sec = (Date.now() - startTime) / 1000;
+            const sec = (Date.now() - startTime) / 1000;
             console.log('> Built %s in %d seconds', outputName + '.js', sec);
         }
         callback();

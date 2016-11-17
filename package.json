@@ -14,6 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/pixijs/pixify.git"
   },
+  "jshintConfig": {
+    "esversion": 6,
+    "node": true
+  },
   "keywords": [
     "Browserify",
     "sourcemaps",
