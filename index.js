@@ -7,7 +7,7 @@ const pixify = require('./lib/pixify');
 
 // Get the commandline arguments
 const args = minimist(process.argv.slice(2), {
-    alias: { 
+    alias: {
         e: 'exclude',
         d: 'dest',
         l: 'license',
@@ -17,11 +17,13 @@ const args = minimist(process.argv.slice(2), {
         w: 'watch',
         x: 'noExternal',
         p: 'plugin',
-        t: 'transform'
+        t: 'transform',
+        r: 'remove'
     },
     boolean: [
         'watch',
-        'noExternal'
+        'noExternal',
+        'remove'
     ],
     string: [
         'name',
@@ -36,7 +38,8 @@ const args = minimist(process.argv.slice(2), {
         dest: './bin/',
         source: './src/',
         watch: false,
-        noExternal: false
+        noExternal: false,
+        remove: false
     }
 });
 
@@ -45,6 +48,26 @@ const outputName = args.outputName || args.name;
 if (!outputName) {
     console.log('> ERROR: Must include name for output.');
     process.exit(1);
+}
+
+if (args.remove) {
+    const fs = require('fs');
+    const path = require('path');
+    const prevDestFiles = [
+        path.join(args.dest, outputName + '.js'),
+        path.join(args.dest, outputName + '.min.js'),
+        path.join(args.dest, outputName + '.js.map'),
+        path.join(args.dest, outputName + '.min.js.map'),
+    ];
+    prevDestFiles.forEach(function(file) {
+        if (fs.existsSync(file)) {
+            try {
+                fs.unlinkSync(file);
+            } catch(error) {
+                console.warn("WARNING: Can't remove " + file + " : ", error);
+            }
+        }
+    });
 }
 
 // Bundle and show the timestamps
