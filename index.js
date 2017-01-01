@@ -60,7 +60,7 @@ function bundle(options, callback) {
         if (!args.watch) {
             // Display the output, on in non-watch mode
             const sec = (Date.now() - startTime) / 1000;
-            console.log('> Built %s in %d seconds', outputName + '.js', sec);
+            console.log('> Built %s in %d seconds', options.output, sec);
         }
         callback();
     });
