@@ -73,8 +73,7 @@ function bundle(options, callback) {
 bundle({
     cli: true,
     compress: false,
-    output: outputName + '.js',
-    external: args.external
+    output: outputName + '.js'
 },
 function() {
     // Don't do minify release when watching
@@ -84,8 +83,7 @@ function() {
         bundle({
             cli: true,
             compress: true,
-            output: outputName + '.min.js',
-            external: args.external
+            output: outputName + '.min.js'
         }, finish);
     }
     else {
