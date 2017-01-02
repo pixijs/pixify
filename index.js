@@ -7,7 +7,7 @@ const pixify = require('./lib/pixify');
 
 // Get the commandline arguments
 const args = minimist(process.argv.slice(2), {
-    alias: { 
+    alias: {
         e: 'exclude',
         d: 'dest',
         l: 'license',
@@ -17,11 +17,13 @@ const args = minimist(process.argv.slice(2), {
         w: 'watch',
         x: 'noExternal',
         p: 'plugin',
-        t: 'transform'
+        t: 'transform',
+        c: 'compress'
     },
     boolean: [
         'watch',
-        'noExternal'
+        'noExternal',
+        'compress'
     ],
     string: [
         'name',
@@ -36,7 +38,8 @@ const args = minimist(process.argv.slice(2), {
         dest: './bin/',
         source: './src/',
         watch: false,
-        noExternal: false
+        noExternal: false,
+        compress: true
     }
 });
 
@@ -76,7 +79,7 @@ bundle({
 function() {
     // Don't do minify release when watching
     // it's too slow because of uglify
-    if (!args.watch) {
+    if (!args.watch && args.compress) {
         // Do the release build
         bundle({
             cli: true,
