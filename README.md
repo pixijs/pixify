@@ -4,7 +4,7 @@
 
 Browserify bundle process for PIXI libraries.
 
-This creates two build files, compressed and uncompressed. Both with sourcemaps and license headers. 
+This creates two build files, compressed and uncompressed. Both with sourcemaps and license headers.
 
 ## Installation
 
@@ -18,22 +18,22 @@ npm install pixify --save-dev
 pixify --name [library-name]
 ```
 
-For instance, 
+For instance,
 ```bash
 pixify --name my-library
 ```
 
 ### Options
 
-* **--name** or **-n** (required) The name of the output file and Browserify's `standalone` argument. 
-* **--source** or **-s** (default: `./src/` Application source to build. 
+* **--name** or **-n** (required) The name of the output file and Browserify's `standalone` argument.
+* **--source** or **-s** (default: `./src/` Application source to build.
 * **--dest** or **-d** (default: `./bin/`) Destination folder for building.
 * **--exclude** or **-e** (optional) Folder names in `--source` to ignore, for custom builds.
 * **--outputName** or **-o** (optional) The name of the output file if different from `--name`.
-* **--license** or **-l** (default: `{pixify}/lib/license.js`) License template to use 
+* **--license** or **-l** (default: `{pixify}/lib/license.js`) License template to use
 * **--watch** or **-w** (default: `false`) `true` to run watchify when running bundling.
 * **--minify** or **-m** (default: `true`) `false` to only generate the uncompressed version of the library
-* **--noExternal** or **-x** (default: `false`) `true` to not bundle external modules.
+* **--external** or **-x** (default: `true`) `false` to not bundle external modules.
 * **--plugin** or **-p** (optiona) Additional plugin(s) to use for Browserify, such as tsify.
 * **--transform** for **-t** (optional) Addtional transform(s) to use for Browserify, such as babelify.
 
@@ -48,7 +48,7 @@ var pixify = require('pixify');
 pixify({
 	output: 'library.min.js',
 	name: 'library',
-    source: './src/', 
+    source: './src/',
     dest: './bin/',
     license: './lib/license.js',
     compress: true,
@@ -69,7 +69,7 @@ pixify('library.min.js', function(){
 * **options.compress** (`Boolean`, default: `true`) `true` to compress output
 * **options.source** (`String`, default: `"./src/"`) Output source name
 * **options.dest** (`String`, default: `"./bin/"`) Output folder
-* **options.license** (`String`, default: `"{pixify}/lib/license.js"`) License template 
+* **options.license** (`String`, default: `"{pixify}/lib/license.js"`) License template
 * **options.exclude** (`String|String[]`)  List of modules to ignore from output. Useful for creating custom builds.
 * **options.watch** (`Boolean`, default: `false`)  `true` to run watchify when bundling.
 * **options.external** (`Boolean`, default: `true`) `false` to not bundle external modules.
