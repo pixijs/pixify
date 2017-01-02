@@ -18,12 +18,12 @@ const args = minimist(process.argv.slice(2), {
         x: 'noExternal',
         p: 'plugin',
         t: 'transform',
-        c: 'compress'
+        m: 'minify'
     },
     boolean: [
         'watch',
         'noExternal',
-        'compress'
+        'minify'
     ],
     string: [
         'name',
@@ -39,7 +39,7 @@ const args = minimist(process.argv.slice(2), {
         source: './src/',
         watch: false,
         noExternal: false,
-        compress: true
+        minify: true
     }
 });
 
@@ -79,7 +79,7 @@ bundle({
 function() {
     // Don't do minify release when watching
     // it's too slow because of uglify
-    if (!args.watch && args.compress) {
+    if (!args.watch && args.minify) {
         // Do the release build
         bundle({
             cli: true,

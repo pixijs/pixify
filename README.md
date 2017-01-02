@@ -32,7 +32,7 @@ pixify --name my-library
 * **--outputName** or **-o** (optional) The name of the output file if different from `--name`.
 * **--license** or **-l** (default: `{pixify}/lib/license.js`) License template to use 
 * **--watch** or **-w** (default: `false`) `true` to run watchify when running bundling.
-* **--compress** or **-c** (default: `true`) `false` to only generate the uncompressed version of the library
+* **--minify** or **-m** (default: `true`) `false` to only generate the uncompressed version of the library
 * **--noExternal** or **-x** (default: `false`) `true` to not bundle external modules.
 * **--plugin** or **-p** (optiona) Additional plugin(s) to use for Browserify, such as tsify.
 * **--transform** for **-t** (optional) Addtional transform(s) to use for Browserify, such as babelify.
