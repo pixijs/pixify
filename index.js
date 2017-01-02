@@ -58,7 +58,7 @@ function bundle(options, callback) {
     if (!args.watch) {
         startTime = Date.now();
     }
-    options = Object.assign({}, options, args);
+    options = Object.assign({}, args, options);
     pixify(options, function() {
         if (!args.watch) {
             // Display the output, on in non-watch mode
